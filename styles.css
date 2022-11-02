@@ -14,7 +14,8 @@ body {
 }
 
 .image-sidebar {
-    position: relative;
+    
+    
     width: 35%;
     height: 100%;
     background-repeat: no-repeat;
@@ -23,13 +24,26 @@ body {
     background-image: url(images/halie-west-25xggax4bSA-unsplash.jpg);
 }
 
+.container{
+    height: 50%;
+    min-height: 10px;
+    position: relative;
+}
+
+.container2 {
+    height:50%;
+    min-height: 10px;
+    position: relative;
+}
+
 .logo {
     width: 100%;
     display: flex;
     position: absolute;
     justify-content: center;
     align-items: center;
-    top: 30vh;
+    height: max(80px, 30%);
+    top: 60%;
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -44,11 +58,13 @@ body {
     margin-left: 10px;
 }
 
-.image-sidebar > p {
+.image-sidebar > .container2 > p {
     width: 100%;
     color: white;
     position: absolute;
+    top: max(10px, 85%);
     bottom: 10px;
+   
     text-align: center;
 
 }
@@ -106,14 +122,20 @@ form {
 
 fieldset {
     border: none;
-    box-shadow: 0 5px 5px 0 grey;
+    
     padding: 40px;
     font-size: 10px;
     margin: 0;
 }
 
+.wrapper {
+    box-shadow: 0 5px 10px 0 grey;
+    padding-top: 10px;
+}
+
 legend {
     font-size: 20px;
+    font-weight: bold;
 }
 
 form button {
@@ -125,7 +147,7 @@ form button {
 }
 
 .grid-container div input, .grid-container div label {
-    width: 100%
+    width: 90%
 }
 
 form button {
@@ -140,3 +162,61 @@ form button {
 }
 
 
+
+fieldset input {
+    
+    height: 20px;
+    border: 1px solid rgb(199, 199, 199);
+    outline: none;
+   
+}
+
+fieldset input:focus {
+
+    border: 2px solid blue;
+    border-radius: 3px;
+    box-shadow: 1px 3px 5px grey;
+}
+
+input.error {
+    border: 2px solid red;
+    border-radius: 3px;
+    box-shadow: 1px 3px 5px grey;
+}
+
+.mismatch {
+    color: red;
+    margin-top: -15px;
+}
+
+input::placeholder {
+    color: lightgrey;
+}
+
+.grid-container > div {
+    display: flex;
+    flex-flow: row wrap;
+    width: 90%;
+    
+}
+
+input + span {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+}
+  
+input:required + span::after {
+    font-size: 0.7rem;
+    position: absolute;
+    content: "required";
+    color: white;
+    background-color: black;
+    padding: 2px 10px;
+    
+    top: -20px;
+    left: -70px;
+    
+}

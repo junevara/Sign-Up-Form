@@ -9,14 +9,18 @@
 </head>
 <body>
     <div class="image-sidebar">
-        <div class="logo">
-            <img src="images/odin-lined.png" alt="odin-logo">
-            <p>Odin</p>
+        <div class="container">
+            <div class="logo">
+                <img src="images/odin-lined.png" alt="odin-logo">
+                <p>Odin</p>
             
+            </div>
         </div>
-        <p><a href="https://unsplash.com/photos/25xggax4bSA">Photo</a> by <a href="https://unsplash.com/@haliewestphoto?utm_
-            source=unsplash&utm_medium=referral&utm_content=creditCopyText">Halie West</a> on <a href="https://unsplash.com/?utm_
-            source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+        <div class="container2">
+            <p><a href="https://unsplash.com/photos/25xggax4bSA">Photo</a> by <a href="https://unsplash.com/@haliewestphoto?utm_
+                source=unsplash&utm_medium=referral&utm_content=creditCopyText">Halie West</a> on <a href="https://unsplash.com/?utm_
+                source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+        </div>
     </div>
     <div class="content-area">
         <div class="some-text">
@@ -32,15 +36,18 @@
                     <div class="grid-container">
                         <div>
                             <label for="first_name">First Name</label>
-                            <input type="text" id="first_name" name="first_name">
+                            <input type="text" id="first_name" name="first_name" required>
+                            <span></span>
                         </div>
                         <div>
                             <label for="last_name">Last Name</label>
-                            <input type="text" id="last_name" name="last_name">
+                            <input type="text" id="last_name" name="last_name" required>
+                            <span></span>
                         </div>
                         <div>
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email">
+                            <input type="email" id="email" name="email" required placeholder="jondoe@gmail.com">
+                            <span></span>
                         </div>
                         <div>
                             <label for="phone_number">Phone Number</label>
@@ -48,22 +55,82 @@
                         </div>
                         <div>
                             <label for="password">Password</label>
-                            <input type="password" id="password" name="password">
+                            <input type="password" id="password" name="password" class="error password" required>
+                            <span></span>
                         </div>
                         <div>
                             <label for="confirm_password">Confirm Password</label>
-                            <input type="password" id="confirm_password" name="confirm_password">
+                            <input type="password" id="confirm_password" name="confirm_password" class="error password_confirm" required>
+                            <span></span>
                         </div>
                 
                     </div>
                 </fieldset>
             </div>
-            <button type="submit">Create Account</button>
+            <button type="submit" disabled>Create Account</button>
 
         </form>
         <p>Already have an account? <a href="#">Log in</a></p>
     </div>
+    <script>
+        let password = document.querySelector("#password");
+        let passwordconfirm = document.querySelector("#confirm_password");
+        let gridcontainer = document.querySelector('.grid-container');
+        let button = document.querySelector('button');
+       
+        password.addEventListener('change', () => {
+            
+            if ((password.value === passwordconfirm.value) && (password.value !== '')){
+            password.classList.remove("error")
+            passwordconfirm.classList.remove("error");
+            button.removeAttribute('disabled');
+            }
+            else {
+                        
+                        const p = document.createElement("p");
+                        p.classList.add('mismatch');
+                        p.textContent = "* Passwords do not match";
+                        gridcontainer.appendChild(p);
+                        button.setAttribute('disabled', '');
+                        password.classList.add("error")
+                        passwordconfirm.classList.add("error");
+                    }
+            const p = document.querySelector('.mismatch');
+            if ((password.value === passwordconfirm.value) && (p.textContent)){
+                p.remove();
+            }
+            
+        });
 
+        passwordconfirm.addEventListener('change', () => {
+           
+           if ((password.value === passwordconfirm.value) && (password.value !== '')){
+                password.classList.remove("error")
+                passwordconfirm.classList.remove("error");
+                button.removeAttribute('disabled');
+               
+           
+            }
+            else {
+                        
+                        const p = document.createElement("p");
+                        p.classList.add('mismatch');
+                        p.textContent = "* Passwords do not match";
+                        gridcontainer.appendChild(p);
+                        button.setAttribute('disabled', '');
+                        password.classList.add("error")
+                        passwordconfirm.classList.add("error");
+                    }
+            const p = document.querySelector('.mismatch');
+            if ((password.value === passwordconfirm.value) && (p.textContent)){
+                p.remove();
+            }
+
+           
+        });
+
+
+    </script>
 
     
 </body>
