@@ -77,6 +77,7 @@
         let passwordconfirm = document.querySelector("#confirm_password");
         let gridcontainer = document.querySelector('.grid-container');
         let button = document.querySelector('button');
+        let mismatchpset = false;
        
         password.addEventListener('change', () => {
             
@@ -86,21 +87,27 @@
             button.removeAttribute('disabled');
             }
             else {
-                        
-                        const p = document.createElement("p");
-                        p.classList.add('mismatch');
-                        p.textContent = "* Passwords do not match";
-                        gridcontainer.appendChild(p);
+                      if(!mismatchpset){
+                        const para = document.createElement("p");
+                        para.classList.add('mismatch');
+                        para.textContent = "* Passwords do not match";
+                        gridcontainer.appendChild(para);
+                         mismatchpset = true;
+                      }
                         button.setAttribute('disabled', '');
                         password.classList.add("error")
                         passwordconfirm.classList.add("error");
+                       
                     }
-            const p = document.querySelector('.mismatch');
-            if ((password.value === passwordconfirm.value) && (p.textContent)){
-                p.remove();
+            const pa = document.querySelector('.mismatch');
+            if ((password.value === passwordconfirm.value) && (pa.textContent)){
+                pa.remove();
+                mismatchpset = false;
             }
             
         });
+
+        
 
         passwordconfirm.addEventListener('change', () => {
            
@@ -112,18 +119,21 @@
            
             }
             else {
-                        
-                        const p = document.createElement("p");
-                        p.classList.add('mismatch');
-                        p.textContent = "* Passwords do not match";
-                        gridcontainer.appendChild(p);
+                    if(!mismatchpset){
+                        const para = document.createElement("p");
+                        para.classList.add('mismatch');
+                        para.textContent = "* Passwords do not match";
+                        gridcontainer.appendChild(para);
+                        mismatchpset = true;
+                    }
                         button.setAttribute('disabled', '');
                         password.classList.add("error")
                         passwordconfirm.classList.add("error");
-                    }
-            const p = document.querySelector('.mismatch');
-            if ((password.value === passwordconfirm.value) && (p.textContent)){
-                p.remove();
+            }
+            const pa = document.querySelector('.mismatch');
+            if ((password.value === passwordconfirm.value) && (pa.textContent)){
+                pa.remove();
+                mismatchpset = false;
             }
 
            
